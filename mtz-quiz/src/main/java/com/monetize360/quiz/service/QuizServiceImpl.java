@@ -12,7 +12,7 @@ public class QuizServiceImpl implements QuizService{
         int noOfCorrect=0;
         Scanner sc =new Scanner(System.in);
         System.out.println("Hello "+username+"! Welcome to the quiz!");
-        List<Question> questions=CsvReaderUtil.loadQuestion();
+        List<Question> questions= CsvReaderUtil.loadQuestion();
         for (Question obj : questions) {
             System.out.println("Question:"+obj.getId());
             System.out.println(obj.getName());
@@ -33,7 +33,7 @@ public class QuizServiceImpl implements QuizService{
             }
         }
         System.out.println("Total no of correct answer is:"+noOfCorrect);
-        System.out.println("Total no of incorrect answer is:"+(5-noOfCorrect));
+        System.out.println("Total no of incorrect answer is:"+(questions.size()-noOfCorrect));
         System.out.println("Thank You");
     }
 }

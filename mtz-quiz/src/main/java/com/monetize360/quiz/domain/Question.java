@@ -2,7 +2,6 @@ package com.monetize360.quiz.domain;
 
 import java.util.List;
 
-import com.monetize360.quiz.service.CsvReaderUtil;
 import lombok.Getter;
 import lombok.Setter;
 
