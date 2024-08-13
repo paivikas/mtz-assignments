@@ -1,24 +1,8 @@
 package com.monetize360;
-
-import com.monetize360.student.domain.Student;
 import com.monetize360.student.dto.CountDTO;
-import com.monetize360.student.dto.StudentDTO;
 import com.monetize360.student.service.CourseStatImpl;
-import com.monetize360.student.service.CsvReaderUtil;
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvValidationException;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
         Scanner sc =new Scanner(System.in);
@@ -35,7 +19,7 @@ public class Main {
         //3
         System.out.println("Question 3\nTotal No of placed students are:"+courseStat.getPlacedStudentCount());
         //4
-        System.out.println("Question 4\nTotal No of non placed students are:"+courseStat.getNotPlacedStudentCount());
+        System.out.println("Question 4\nTotal No of non placed students but completed the course are:"+courseStat.getNotPlacedStudentCount());
         //5
         CountDTO dto=courseStat.getPlacedAndNotPlacedCount();
         System.out.println("Question 5 \n"+dto);

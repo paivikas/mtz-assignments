@@ -13,6 +13,11 @@
         <module>mtz-quiz</module>
         <module>ipl-stats</module>
         <module>student-details</module>
+        <module>emp-details</module>
+        <module>ipl-jdbc</module>
+        <module>contact</module>
+        <module>pdf-gen</module>
+        <module>invoice-generation</module>
     </modules>
 
     <properties>

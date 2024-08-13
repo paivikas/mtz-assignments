@@ -38,6 +38,7 @@ public class CourseStatImpl implements CourseStat{
     @Override
     public int getNotPlacedStudentCount() {
         return (int) students.stream()
+                .filter(student -> "Y".equalsIgnoreCase(student.getCompleted()))
                 .filter(student -> "N".equalsIgnoreCase(student.getPlaced()))
                 .count();
     }
@@ -46,7 +47,8 @@ public class CourseStatImpl implements CourseStat{
     public CountDTO getPlacedAndNotPlacedCount() {
         CountDTO dto=new CountDTO();
         dto.setPlacedCount(getPlacedStudentCount());
-        dto.setNotPlacedCount(getNotPlacedStudentCount());
+        dto.setNotPlacedCount((int) students.stream().filter(student -> "N".equalsIgnoreCase(student.getPlaced()))
+                .count());
         return dto;
     }
 

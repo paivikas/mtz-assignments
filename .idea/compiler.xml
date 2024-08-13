@@ -7,9 +7,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="invoice-generation" />
+        <module name="emp-details" />
+        <module name="pdf-gen" />
+        <module name="contact" />
         <module name="ipl-stats" />
         <module name="mtz-quiz" />
         <module name="student-details" />
+        <module name="ipl-jdbc" />
       </profile>
     </annotationProcessing>
   </component>
