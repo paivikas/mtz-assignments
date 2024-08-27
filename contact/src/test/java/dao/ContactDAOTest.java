@@ -1,3 +1,5 @@
+package dao;
+
 import com.monetize360.contactapp.dao.ContactDaoImpl;
 import com.monetize360.contactapp.dto.ContactDto;
 import com.monetize360.contactapp.util.ConnectionUtil;

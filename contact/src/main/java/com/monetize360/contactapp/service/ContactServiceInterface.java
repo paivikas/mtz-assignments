@@ -11,16 +11,16 @@ import java.util.List;
 
     public interface ContactServiceInterface {
         // Create a new contact
-        void createContact(ContactDto contact, Connection connection);
+        boolean createContact(ContactDto contact, Connection connection);
 
         // Update an existing contact
-        void updateContact(int id, ContactDto contact,Connection connection);
+        boolean updateContact(int id, ContactDto contact,Connection connection);
 
         // Search for contacts by name, email, etc.
         List<ContactDto> searchContacts(String query,Connection connection);
 
         // Delete a contact by ID
-        void deleteContact(int id,Connection connection);
+        boolean deleteContact(int id,Connection connection);
 
         // Get a contact by ID
         ContactDto getContactById(int id,Connection connection);

@@ -1,2 +1,8 @@
-package com.monetize360.jpa.repositories;public interface AuthorRepository {
+package com.monetize360.jpa.repositories;
+
+import com.monetize360.jpa.models.Author;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AuthorRepository extends JpaRepository<Author,Integer> {
+
 }

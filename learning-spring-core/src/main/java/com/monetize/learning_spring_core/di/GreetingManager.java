@@ -1,15 +1,14 @@
-package com.monetize.learning_spring_core;
+package com.monetize.learning_spring_core.di;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GreetingManager{
-    private GreetingService greetingService;
+public class GreetingManager {
+    private final GreetingService greetingService;
 
-    @Autowired
-    public GreetingManager(@Qualifier("birthdayGreetings") GreetingService greetingService) {
+    public GreetingManager(@Qualifier("birthdayGreeting") GreetingService greetingService) {
         this.greetingService = greetingService;
     }
 

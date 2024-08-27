@@ -1,8 +1,5 @@
 package com.monetize360.service;
 
-
-
-
 import org.apache.fop.apps.*;
 import javax.xml.transform.*;
 import javax.xml.transform.sax.SAXResult;
