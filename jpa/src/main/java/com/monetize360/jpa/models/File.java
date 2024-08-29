@@ -1,6 +1,6 @@
 package com.monetize360.jpa.models;
 
-import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,12 +9,14 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@DiscriminatorColumn(name = "F")
-public class File extends Resource{
+// @DiscriminatorValue("F")
+public class File extends Resource {
+
     private String type;
+
 }

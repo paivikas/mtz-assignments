@@ -1,12 +1,7 @@
 package com.monetize360.cbook_server_app.domain;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
 import java.util.UUID;
 @Getter
 @Setter
@@ -16,9 +11,14 @@ public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    @Column(name = "firstname")
     private String firstName;
+    @Column(name = "lastname")
     private String lastName;
+    @Column(name = "email")
     private String email;
+    @Column(name = "mobile")
     private String mobile;
+    @Column(name = "deleted")
     private boolean deleted;
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+<changeSet id="1" author="Vikas">
+    <sqlFile path="liquibase/changelog-v1.0.sql"/>
+</changeSet>
+</databaseChangeLog>
+        <!--<?xml version="1.0" encoding="UTF-8"?>-->
+        <!--<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"-->
+        <!--                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"-->
+        <!--                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+        <!--                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext-->
+        <!--https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd-->
+        <!--http://www.liquibase.org/xml/ns/dbchangelog-->
+        <!--https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">-->
+
+        <!--    <include file="/liquibase/create_contact_v1_changeset1.sql"/>-->
+        <!--    <include file="/liquibase/add_contacts_v1_changeset2.sql"/>-->
+        <!--</databaseChangeLog>-->

@@ -13,6 +13,5 @@ public interface ContactService {
     ContactDto getContactById(UUID uuid);
     void deleteContact(UUID uuid);
     List<ContactDto> getAllContacts(String field, String direction, int page, int size);
-    List<ContactDto> searchContacts(String search);
     BufferedImage generateQRCode(UUID id) throws Exception;
 }

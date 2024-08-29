@@ -21,6 +21,7 @@
         <module>learning-spring-core</module>
         <module>cbook-server-app</module>
         <module>jpa</module>
+        <module>contact-web-using-jwt</module>
     </modules>
 
     <properties>

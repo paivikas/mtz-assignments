@@ -106,16 +106,7 @@ public class ContactServiceImpl implements ContactService {
         return objectMapper.convertValue(contactPage.getContent(), new TypeReference<List<ContactDto>>() {});
     }
 
-    @Override
-    public List<ContactDto> searchContacts(String search) {
-        List<Contact> contacts = contactRepository
-                .findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCaseOrEmailContainingIgnoreCaseOrMobileContainingIgnoreCase(
-                        search,search,search,search);
 
-
-        log.info("Search result count size is: {}", contacts.size());
-        return objectMapper.convertValue(contacts, new TypeReference<List<ContactDto>>() {});
-    }
     public BufferedImage generateQRCode(UUID id) throws Exception {
         ContactDto contact = getContactById(id);
         if (contact == null) {
