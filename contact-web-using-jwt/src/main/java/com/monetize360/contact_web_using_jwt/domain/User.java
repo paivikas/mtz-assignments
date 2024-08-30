@@ -1,15 +1,17 @@
 package com.monetize360.contact_web_using_jwt.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
 import java.util.UUID;
+
 @Getter
 @Setter
 @Entity
-@Table(name="user_db")
+@Table(name = "user_db")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -22,5 +24,6 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     private List<Contact> contacts;
 }

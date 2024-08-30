@@ -13,6 +13,6 @@ CREATE TABLE contact_db (
     email VARCHAR(255),
     mobile VARCHAR(255),
     deleted BOOLEAN,
-    user_id UUID NOT NULL,
+    user_id UUID,
     CONSTRAINT fk_contact_user FOREIGN KEY (user_id) REFERENCES user_db(id)
 );
