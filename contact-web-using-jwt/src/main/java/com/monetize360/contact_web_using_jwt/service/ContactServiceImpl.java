@@ -14,6 +14,7 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvException;
 import com.opencsv.exceptions.CsvValidationException;
+import jakarta.mail.internet.MimeMessage;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.CellType;
@@ -23,10 +24,13 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -48,6 +52,8 @@ public class ContactServiceImpl implements ContactService {
 
     @Autowired
     private ObjectMapper objectMapper;
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     @Override
     public ContactDto addContact(ContactDto contactDto) {
@@ -194,6 +200,7 @@ public class ContactServiceImpl implements ContactService {
             throw new RuntimeException("Failed to export contacts");
         }
     }
+
     public String getCellValue(XSSFCell cell) {
         if (cell == null) {
             return "";
@@ -208,16 +215,17 @@ public class ContactServiceImpl implements ContactService {
             return cell.toString();
         }
     }
+
     @Override
     public void importContactsFromCSV(MultipartFile file) {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()));
              CSVReader csvReader = new CSVReader(reader)) {
 
             String[] line;
-            boolean firstRow =true;
+            boolean firstRow = true;
             while ((line = csvReader.readNext()) != null) {
-                if(firstRow){
-                    firstRow=false;
+                if (firstRow) {
+                    firstRow = false;
                     continue;
                 }
                 Contact contact = new Contact();
@@ -230,6 +238,32 @@ public class ContactServiceImpl implements ContactService {
         } catch (IOException | CsvValidationException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void sendMail(UUID id, String toEmail) {
+        try {
+            BufferedImage qrCode = generateQRCode(id);
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ImageIO.write(qrCode, "png", byteArrayOutputStream);
+
+
+            MimeMessage message = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+            helper.setTo(toEmail);
+            helper.setSubject("Contact Details");
+            helper.setText("This is the qrcode with details");
+            byte[] qrCodeImage = byteArrayOutputStream.toByteArray();
+            ;
+            helper.addAttachment("Contact_Detail", new ByteArrayResource(qrCodeImage), "image/png");
+            javaMailSender.send(message);
+
+        } catch (Exception e) {
+            //qrcode is empty than it causes exception
+            e.printStackTrace();
+        }
+
     }
 }
 

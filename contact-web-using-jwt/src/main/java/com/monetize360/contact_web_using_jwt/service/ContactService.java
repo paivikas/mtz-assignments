@@ -17,4 +17,5 @@ public interface ContactService {
     void importContacts(MultipartFile file);
     byte[] exportContacts();
     void importContactsFromCSV(MultipartFile file);
+    void sendMail(UUID id, String toEmail);
 }

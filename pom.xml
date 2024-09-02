@@ -22,6 +22,7 @@
         <module>cbook-server-app</module>
         <module>jpa</module>
         <module>contact-web-using-jwt</module>
+        <module>jwt-security</module>
     </modules>
 
     <properties>

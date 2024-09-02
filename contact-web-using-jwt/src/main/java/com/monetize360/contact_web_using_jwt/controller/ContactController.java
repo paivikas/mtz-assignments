@@ -1,7 +1,6 @@
 package com.monetize360.contact_web_using_jwt.controller;
 
 import com.monetize360.contact_web_using_jwt.dto.ContactDto;
-//import com.monetize360.cbook_server_app.service.ContactService;
 import com.monetize360.contact_web_using_jwt.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -93,5 +92,15 @@ public class ContactController {
     public ResponseEntity<Void> importContactsFromCsv(@RequestParam("file") MultipartFile file) {
         contactService.importContactsFromCSV(file);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+    @GetMapping("/send-email/{id}")
+    public ResponseEntity<String> sendEmail(@PathVariable("id") UUID id,@RequestParam(value = "email")String email) {
+        try {
+            contactService.sendMail(id, email);
+            return ResponseEntity.ok("Mail sent successfully!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>("Mail submission failed",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

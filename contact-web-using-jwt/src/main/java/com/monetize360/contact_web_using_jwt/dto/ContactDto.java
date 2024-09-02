@@ -10,11 +10,12 @@ import java.util.UUID;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Data
 public class ContactDto {
     private UUID id;
     private String firstName;
     private String lastName;
     private String email;
     private String mobile;
-    private boolean deleted;
+    private UUID userId;
 }
